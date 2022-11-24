@@ -1,8 +1,18 @@
-package guru.springframework.sfgrecipeproject.model;
+package guru.springframework.sfgrecipeproject.domain;
 
-public class IngredientQuantity extends BaseEntity {
+import javax.persistence.*;
+
+@Entity
+public class IngredientQuantity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
     private Double quantity;
+    @ManyToOne
+    @JoinColumn(name = "quantity_unit_id")
     private QuantityUnit quantityUnit;
 
     public IngredientQuantity() {

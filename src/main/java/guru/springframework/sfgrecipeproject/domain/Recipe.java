@@ -1,20 +1,24 @@
-package guru.springframework.sfgrecipeproject.model;
+package guru.springframework.sfgrecipeproject.domain;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Recipe extends BaseEntity {
+@Entity
+public class Recipe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String recipeText;
     private LocalDateTime timestamp;
     private MealType mealType;
-    private List<Ingredient> ingredients;
-    private List<Step> steps;
+    @ManyToMany
+    @JoinTable(name = "recipe_ingredient", joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredientquantity_id"))
+    private List<IngredientQuantity> ingredients = new java.util.ArrayList<>();
 
-    public Recipe(String title, String recipeText, MealType mealType) {
-        this.title = title;
-        this.recipeText = recipeText;
+    public Recipe() {
         this.timestamp = LocalDateTime.now();
-        this.mealType = mealType;
     }
 
     public String getTitle() {
@@ -41,20 +45,12 @@ public class Recipe extends BaseEntity {
         this.timestamp = timestamp;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<IngredientQuantity> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(List<IngredientQuantity> ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public List<Step> getSteps() {
-        return steps;
-    }
-
-    public void setSteps(List<Step> steps) {
-        this.steps = steps;
     }
 
     public MealType getMealType() {
@@ -63,5 +59,13 @@ public class Recipe extends BaseEntity {
 
     public void setMealType(MealType mealType) {
         this.mealType = mealType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
