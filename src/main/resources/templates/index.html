@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page: Recipes</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>Ingredients</li>
+        </ul>
+    </nav>
+</header>
+
+<h1>List of recipes</h1>
+<table border="1px solid">
+    <thead>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Published</th>
+        <th>Meal Type</th>
+        <th>Ingredients</th>
+    </thead>
+    <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.id}">123</td>
+            <td th:text="${recipe.title}">Sourdough</td>
+            <td th:text="${recipe.recipeText}">Delicious sourdough bread</td>
+            <td th:text="${recipe.timestamp}">11/24/2022</td>
+            <td th:text="${recipe.mealType}">dinner</td>
+            <td>
+                <ul th:each="ingredient: ${recipe.ingredients}">
+                    <li th:text="${ingredient.ingredient.getName()}">name</li>
+                    <li th:text="${ingredient.quantity}">quantity</li>
+                    <li th:text="${ingredient.quantityUnit.name}">gr</li>
+                    <hr>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+</body>
+</html>
