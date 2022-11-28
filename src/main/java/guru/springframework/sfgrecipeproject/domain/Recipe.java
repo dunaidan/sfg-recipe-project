@@ -20,9 +20,7 @@ public class Recipe {
     private Notes notes;
     private LocalDateTime timestamp;
     private MealType mealType;
-    @ManyToMany
-    @JoinTable(name = "recipe_ingredient", joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredientquantity_id"))
+    @OneToMany(cascade = CascadeType.ALL)
     private List<IngredientQuantity> ingredients = new java.util.ArrayList<>();
 
     public Recipe() {

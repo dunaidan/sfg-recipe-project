@@ -26,26 +26,26 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Ingredient tomato = new Ingredient();
-        tomato.setName("Tomato");
-        ingredientRepository.save(tomato);
-
-        QuantityUnit grams = new QuantityUnit();
-        grams.setName("grams");
-        quantityUnitRepository.save(grams);
-
-        IngredientQuantity ingredientQuantity = new IngredientQuantity();
-        ingredientQuantity.setIngredient(tomato);
-        ingredientQuantity.setQuantity(200.00);
-        ingredientQuantity.setQuantityUnit(grams);
-        ingredientQuantityRepository.save(ingredientQuantity);
-
-        Recipe pasta = new Recipe();
-        pasta.setTitle("Pasta with Ton");
-        pasta.setRecipeText("Pasta with ton, tomatoes and cheese");
-        pasta.setMealType(MealType.DINNER);
-        pasta.getIngredients().add(ingredientQuantity);
-        recipeService.save(pasta);
+//        Ingredient tomato = new Ingredient();
+//        tomato.setName("Tomato");
+//        ingredientRepository.save(tomato);
+//
+//        QuantityUnit grams = new QuantityUnit();
+//        grams.setName("grams");
+//        quantityUnitRepository.save(grams);
+//
+//        IngredientQuantity ingredientQuantity = new IngredientQuantity();
+//        ingredientQuantity.setIngredient(tomato);
+//        ingredientQuantity.setQuantity(200.00);
+//        ingredientQuantity.setQuantityUnit(grams);
+//        ingredientQuantityRepository.save(ingredientQuantity);
+//
+//        Recipe pasta = new Recipe();
+//        pasta.setTitle("Pasta with Ton");
+//        pasta.setRecipeText("Pasta with ton, tomatoes and cheese");
+//        pasta.setMealType(MealType.DINNER);
+//        pasta.getIngredients().add(ingredientQuantity);
+//        recipeService.save(pasta);
 
     }
 }
