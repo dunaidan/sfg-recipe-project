@@ -19,9 +19,12 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     private LocalDateTime timestamp;
+    @Enumerated(value = EnumType.STRING)
     private MealType mealType;
     @OneToMany(cascade = CascadeType.ALL)
     private List<IngredientQuantity> ingredients = new java.util.ArrayList<>();
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     public Recipe() {
         this.timestamp = LocalDateTime.now();
@@ -121,5 +124,13 @@ public class Recipe {
 
     public void setIngredients(List<IngredientQuantity> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
