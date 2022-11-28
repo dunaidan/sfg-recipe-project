@@ -1,10 +1,9 @@
 package guru.springframework.sfgrecipeproject.domain;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class QuantityUnit {
+public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

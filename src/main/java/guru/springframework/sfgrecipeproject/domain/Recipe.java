@@ -19,10 +19,13 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     private LocalDateTime timestamp;
-    @Enumerated(value = EnumType.STRING)
-    private MealType mealType;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<IngredientQuantity> ingredients = new java.util.ArrayList<>();
+    private List<IngredientQuantity> ingredients;
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
@@ -110,20 +113,20 @@ public class Recipe {
         this.timestamp = timestamp;
     }
 
-    public MealType getMealType() {
-        return mealType;
-    }
-
-    public void setMealType(MealType mealType) {
-        this.mealType = mealType;
-    }
-
     public List<IngredientQuantity> getIngredients() {
         return ingredients;
     }
 
     public void setIngredients(List<IngredientQuantity> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public Difficulty getDifficulty() {
