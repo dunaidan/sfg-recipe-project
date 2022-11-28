@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add an ingredients</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{index.html}">Home</a></li>
+            <li><a th:href="@{/ingredients}">Ingredients</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Add an ingredient</h1>
+<form action="#" th:action="@{/ingredients/add}" th:object="${ingredient}" method="post">
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
