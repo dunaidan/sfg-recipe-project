@@ -11,6 +11,13 @@ public class Ingredient implements Serializable {
     private Long id;
     private String name;
 
+    public Ingredient() {
+    }
+
+    public Ingredient(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

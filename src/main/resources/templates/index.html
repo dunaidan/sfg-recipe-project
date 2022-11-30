@@ -14,36 +14,34 @@
         </ul>
     </nav>
 </header>
+<main>
+    <div>
+        <h2>List of recipes</h2>
 
-<h1>List of recipes</h1>
-<table border="1px solid">
-    <thead>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Published</th>
-        <th>Meal Type</th>
-        <th>Ingredients</th>
-    </thead>
-    <tbody>
-        <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipe.id}">123</td>
-            <td th:text="${recipe.title}">Sourdough</td>
-            <td th:text="${recipe.recipeText}">Delicious sourdough bread</td>
-            <td th:text="${recipe.timestamp}">11/24/2022</td>
-            <td th:text="${recipe.mealType}">dinner</td>
-            <td>
-                <ul th:each="ingredient: ${recipe.ingredients}">
-                    <li th:text="${ingredient.ingredient.getName()}">name</li>
-                    <li th:text="${ingredient.quantity}">quantity</li>
-                    <li th:text="${ingredient.quantityUnit.name}">gr</li>
-                    <hr>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
+        <article th:each="recipe : ${recipes}">
+            <h3 th:text="${recipe.title}"></h3>
+            <p th:text="${recipe.timestamp}">Published at: </p>
+            <p>Categories: </p>
+            <ul th:each="category: ${recipe.categories}">
+                <li th:text="${category.description}">Category description</li>
+            </ul>
+            <p th:text="${recipe.notes.recipeNotes}">Recipe description</p>
+            <p>Prep Time: <span th:text="${recipe.prepTime}"></span></p>
+            <p>Total Time: <span th:text="${recipe.cookTime}"></span></p>
+            <p>Servings: <span th:text="${recipe.servings}"></span></p>
+            <p>Ingredients:</p>
+            <ul th:each="ingredientQuntity: ${recipe.ingredients}">
+                <li th:text="${ingredientQuntity.ingredient.name} + ${ingredientQuntity.quantity} + ${ingredientQuntity.unitOfMeasure.name}">Ingredient description</li>
+            </ul>
 
-</table>
+            <p th:text="${recipe.directions}">Preparations steps</p>
+            <a th:href="${recipe.url}">more info</a>
+        </article>
+    </div>
+</main>
+
+
+
 
 
 </body>

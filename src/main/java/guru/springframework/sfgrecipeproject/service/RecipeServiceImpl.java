@@ -4,6 +4,7 @@ import guru.springframework.sfgrecipeproject.domain.Recipe;
 import guru.springframework.sfgrecipeproject.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,7 +18,9 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<Recipe> getRecipes() {
-        return recipeRepository.findAll();
+        List<Recipe> recipes = new ArrayList<>();
+        recipeRepository.findAll().forEach(recipes::add);
+        return recipes;
     }
 
     @Override
