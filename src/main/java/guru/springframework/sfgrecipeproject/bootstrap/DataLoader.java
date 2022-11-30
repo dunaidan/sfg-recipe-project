@@ -92,26 +92,23 @@ public class DataLoader implements CommandLineRunner {
         guacamoleNotes.setRecipeNotes("Guacamole! Did you know that over 2 billion pounds of avocados are consumed each year in the U.S.? (Google it.) That's over 7 pounds per person. I'm guessing that most of those avocados go into what has become America's favorite dip: guacamole.");
         guacamole.addNotes(guacamoleNotes);
 
-        guacamole.setDirections("The best guacamole keeps it simple: just ripe avocados and a handful of flavorful mix-ins. " +
-                "Serve it as a dip at your next party or spoon it on top of tacos for an easy dinner upgrade.\n" +
-                "1. Cut the avocado:\n" +
-                "Cut the avocados in half. Remove the pit. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. Place in a bowl.\n" +
-                "2. Mash the avocado flesh:\n" +
-                "Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)\n" +
-                "3. Add the remaining ingredients to taste:\n" +
-                "Sprinkle with salt and lime (or lemon) juice. The acid in the lime juice will provide some balance to the richness of the avocado and will help delay the avocados from turning brown.\n" +
-                "\n" +
-                "Add the chopped onion, cilantro, black pepper, and chilis. Chili peppers vary individually in their spiciness. So, start with a half of one chili pepper and add more to the guacamole to your desired degree of heat.\n" +
-                "\n" +
-                "Remember that much of this is done to taste because of the variability in the fresh ingredients. Start with this recipe and adjust to your taste.\n" +
-                "4. Serve immediately:\n" +
-                "If making a few hours ahead, place plastic wrap on the surface of the guacamole and press down to cover it to prevent air reaching it. (The oxygen in the air causes oxidation which will turn the guacamole brown.)\n" +
-                "\n" +
-                "Garnish with slices of red radish or jigama strips. Serve with your choice of store-bought tortilla chips or make your own homemade tortilla chips.\n" +
-                "\n" +
-                "Refrigerate leftover guacamole up to 3 days.\n" +
-                "\n" +
-                "Note: Chilling tomatoes hurts their flavor. So, if you want to add chopped tomato to your guacamole, add it just before serving.");
+        guacamole.setDirections("<p>The best guacamole keeps it simple: just ripe avocados and a handful of flavorful mix-ins. " +
+                "Serve it as a dip at your next party or spoon it on top of tacos for an easy dinner upgrade.</p>" +
+                "<p><strong>1. Cut the avocado:</strong></p>" +
+                "<p>Cut the avocados in half. Remove the pit. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. Place in a bowl.</p>" +
+                "<p><strong>2. Mash the avocado flesh:</strong></p>" +
+                "<p>Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)</p>" +
+                "<p><strong>3. Add the remaining ingredients to taste:</strong></p>" +
+                "<p>Sprinkle with salt and lime (or lemon) juice. The acid in the lime juice will provide some balance to the richness of the avocado and will help delay the avocados from turning brown.</p>" +
+                "<p>Add the chopped onion, cilantro, black pepper, and chilis. Chili peppers vary individually in their spiciness. " +
+                "So, start with a half of one chili pepper and add more to the guacamole to your desired degree of heat.</p>" +
+                "<p>Remember that much of this is done to taste because of the variability in the fresh ingredients. Start with this recipe and adjust to your taste.</p>" +
+                "<p><strong>4. Serve immediately:</strong></p>" +
+                "<p>If making a few hours ahead, place plastic wrap on the surface of the guacamole and press down to cover it to prevent air reaching it. " +
+                "(The oxygen in the air causes oxidation which will turn the guacamole brown.)</p>" +
+                "<p>Garnish with slices of red radish or jigama strips. Serve with your choice of store-bought tortilla chips or make your own homemade tortilla chips.</p>" +
+                "<p>Refrigerate leftover guacamole up to 3 days.</p>" +
+                "<p>Note: Chilling tomatoes hurts their flavor. So, if you want to add chopped tomato to your guacamole, add it just before serving.</p>");
 
         recipeService.save(guacamole);
 

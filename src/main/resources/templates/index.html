@@ -1,48 +1,121 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
     <title>Home Page: Recipes</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/blog/">
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/blog.css}"/>
 </head>
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <li><a th:href="@{index.html}">Home</a></li>
-            <li><a th:href="@{/ingredients}">Ingredients</a></li>
-        </ul>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{index.html}">AppLogo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#recipeNavbar" aria-controls="recipeNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="recipeNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{index.html}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" th:href="@{/ingredients}"data-bs-toggle="dropdown" aria-expanded="false">Ingredients</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Add ingredient</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
     </nav>
-</header>
-<main>
-    <div>
-        <h2>List of recipes</h2>
+</div>
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-light">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">List of Recipes</h1>
+        </div>
+    </div>
 
-        <article th:each="recipe : ${recipes}">
-            <h3 th:text="${recipe.title}"></h3>
-            <p th:text="${recipe.timestamp}">Published at: </p>
-            <p>Categories: </p>
-            <ul th:each="category: ${recipe.categories}">
-                <li th:text="${category.description}">Category description</li>
-            </ul>
-            <p th:text="${recipe.notes.recipeNotes}">Recipe description</p>
-            <p>Prep Time: <span th:text="${recipe.prepTime}"></span></p>
-            <p>Total Time: <span th:text="${recipe.cookTime}"></span></p>
-            <p>Servings: <span th:text="${recipe.servings}"></span></p>
-            <p>Ingredients:</p>
-            <ul th:each="ingredientQuntity: ${recipe.ingredients}">
-                <li th:text="${ingredientQuntity.ingredient.name} + ${ingredientQuntity.quantity} + ${ingredientQuntity.unitOfMeasure.name}">Ingredient description</li>
-            </ul>
+    <div class="row g-5">
+        <div class="col-md-8">
+            <article class="blog-post p-4 mb-3 rounded text-bg-light" th:each="recipe : ${recipes}">
+                <h2 class="blog-post-title mb-1" th:text="${recipe.title}">Sample blog post</h2>
+                <p class="blog-post-meta">
+                    <strong th:text="${#temporals.format(recipe.timestamp, 'dd-MM-yyyy HH:mm')}">January 1, 2021</strong>
+                    <a th:href="${recipe.url}" th:text="'by ' + ${recipe.source}">Source</a>
+                </p>
+                <ul class="blog-post-meta list-inline">
+                    <li class="list-inline-item" th:each="category: ${recipe.categories}" th:text="'#'+${category.description}">Mexican</li>
+                </ul>
+                <p th:text="${recipe.notes.recipeNotes}">Recipe description</p>
+                <h2>Recipe</h2>
+                <div class="row mb-3 text-center">
+                    <div class="col-md-4">
+                        <p>Prep Time: <strong th:text="${recipe.prepTime}"></strong> minutes</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Total Time: <strong th:text="${recipe.cookTime}"></strong> minutes</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Servings: <strong th:text="${recipe.servings}"></strong></p>
+                    </div>
+                </div>
+               <h3>Ingredients</h3>
+                <ul class="row mb-2 list-unstyled">
+                    <li class="col-md-6" th:each="ingredientQuntity: ${recipe.ingredients}" th:text="${ingredientQuntity.ingredient.name}+ ' ' + ${ingredientQuntity.quantity}+ ' ' + ${ingredientQuntity.unitOfMeasure.name}"></li>
+                </ul>
+                <h3>Method</h3>
+                <p th:utext="${recipe.directions}">Preparations steps</p>
+            </article>
+            <nav class="blog-pagination" aria-label="Pagination">
+                <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+                <a class="btn btn-outline-secondary rounded-pill disabled">Newer</a>
+            </nav>
 
-            <p th:text="${recipe.directions}">Preparations steps</p>
-            <a th:href="${recipe.url}">more info</a>
-        </article>
+        </div>
+
+        <div class="col-md-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4 mb-3 bg-light rounded">
+                    <h4 class="fst-italic">About</h4>
+                    <p>Recipes Spring Application</p>
+                    <p>A project from Spring Framework 5: Beginner to Guru</p>
+                </div>
+
+                <div class="p-4 mb-3 bg-light rounded">
+                    <h4 class="fst-italic">Categories</h4>
+                    <ol class="list-unstyled mb-0" th:each="recipeCategory: ${categories}">
+                        <li><a href="#" th:text="${recipeCategory.description}">Moldovan</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
+<footer class="blog-footer">
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
 
-
-
-
+<script th:src="@{/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
