@@ -1,8 +1,12 @@
 package guru.springframework.sfgrecipeproject.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
     @Id
@@ -12,27 +16,4 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private List<Recipe> recipes;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }

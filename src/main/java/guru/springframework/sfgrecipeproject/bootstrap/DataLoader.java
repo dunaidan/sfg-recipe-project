@@ -3,11 +3,12 @@ package guru.springframework.sfgrecipeproject.bootstrap;
 import guru.springframework.sfgrecipeproject.domain.*;
 import guru.springframework.sfgrecipeproject.repository.*;
 import guru.springframework.sfgrecipeproject.service.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
-
+@Slf4j
 @Configuration
 public class DataLoader implements CommandLineRunner {
 
@@ -112,6 +113,6 @@ public class DataLoader implements CommandLineRunner {
 
         recipeService.save(guacamole);
 
-
+        log.info("Data was loaded to the DB");
     }
 }

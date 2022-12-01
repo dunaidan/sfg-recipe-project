@@ -2,10 +2,11 @@ package guru.springframework.sfgrecipeproject.service;
 
 import guru.springframework.sfgrecipeproject.domain.Ingredient;
 import guru.springframework.sfgrecipeproject.repository.IngredientRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class IngredientServiceImpl implements IngredientService {
 
