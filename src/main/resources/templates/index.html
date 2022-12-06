@@ -10,7 +10,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/blog/">
 
-    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/dist/css/bootstrap.css}"/>
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
                         <a class="nav-link active" aria-current="page" th:href="@{index.html}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:href="@{/ingredients}"data-bs-toggle="dropdown" aria-expanded="false">Ingredients</a>
+                        <a class="nav-link dropdown-toggle" th:href="@{/ingredients}" data-bs-toggle="dropdown" aria-expanded="false">Ingredients</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Add ingredient</a></li>
                         </ul>
@@ -116,6 +116,6 @@
     </p>
 </footer>
 
-<script th:src="@{/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/dist/js/bootstrap.bundle.js}"></script>
 </body>
 </html>
