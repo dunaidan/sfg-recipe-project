@@ -13,5 +13,4 @@ public class Category extends BaseEntity {
     private String description;
     @ManyToMany(mappedBy = "categories")
     private List<Recipe> recipes;
-
 }
