@@ -1,17 +1,14 @@
 package guru.springframework.sfgrecipeproject.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-@Data
-@EqualsAndHashCode(exclude = {"ingredient", "unitOfMeasure"})
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-public class IngredientQuantity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class IngredientQuantity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
@@ -21,9 +18,6 @@ public class IngredientQuantity {
     private UnitOfMeasure unitOfMeasure;
     @ManyToOne
     private Recipe recipe;
-
-    public IngredientQuantity() {
-    }
 
     public IngredientQuantity(Ingredient ingredient, BigDecimal quantity, UnitOfMeasure unitOfMeasure, Recipe recipe) {
         this.ingredient = ingredient;

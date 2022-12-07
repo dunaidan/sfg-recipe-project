@@ -1,22 +1,13 @@
 package guru.springframework.sfgrecipeproject.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Ingredient implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Ingredient extends BaseEntity {
     private String name;
-
-    public Ingredient() {
-    }
-
-    public Ingredient(String name) {
-        this.name = name;
-    }
 }
