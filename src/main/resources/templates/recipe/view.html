@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipes List</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/blog/">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/dist/css/bootstrap.css}"/>
+
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" th:href="@{/blog.css}"/>
+</head>
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <main>
+    <div class="container">
+      <div class="panel p-4 p-md-5 mb-4 rounded text-bg-light">
+        <div class="panel-header">
+          <h3 th:text="${recipe.title}">Recipe Title</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row p-4">
+            <div class="col">
+              <p><strong>Prep Time: </strong><span th:text="${recipe.prepTime} + ' min'">10 min</span></p>
+              <p><strong>Cook Time: </strong><span th:text="${recipe.cookTime} + ' min'">10 min</span></p>
+              <p><strong>Source: </strong><span th:text="${recipe.source}">Source</span></p>
+            </div>
+            <div class="col">
+              <p><strong>Difficulty: </strong><span th:text="${#strings.toLowerCase(recipe.difficulty)}">hard</span></p>
+              <p><strong>Servings: </strong><span th:text="${recipe.servings}">4</span></p>
+              <p><strong>URL: </strong><span th:text="${recipe.url}">http://google.com</span></p>
+            </div>
+          </div>
+        </div>
+        <ul class="list-group list-group-horizontal">
+          <li th:remove="all">Mexican</li>
+          <li class="list-group-item" th:each="category : ${recipe.categories}" th:text="${category.description}"></li>
+        </ul>
+      </div>
+
+      <div class="panel p-4 p-md-5 mb-4 rounded text-bg-light">
+        <div class="panel-header">
+          <h3>Ingredients</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li th:remove="all">Avocado 2.00 Pieces</li>
+            <li th:each="ingredientQuntity : ${recipe.ingredients}" th:text="${ingredientQuntity.ingredient.name}+ ' ' + ${ingredientQuntity.quantity}+ ' ' + ${ingredientQuntity.unitOfMeasure.name}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel p-4 p-md-5 mb-4 rounded text-bg-light">
+        <div class="panel-header">
+          <h3>Directions</h3>
+        </div>
+        <div class="panel-body">
+          <p th:utext="${recipe.directions}">Recipe Directions</p>
+        </div>
+      </div>
+
+      <div class="panel p-4 p-md-5 mb-4 rounded text-bg-light">
+        <div class="panel-header">
+          <h3>Notes</h3>
+        </div>
+        <div class="panel-body">
+          <p th:text="${recipe.notes.recipeNotes}">Recipe Notes</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer th:replace="fragments/footer :: footer"></footer>
+  <script th:src="@{/webjars/bootstrap/5.2.3/dist/js/bootstrap.bundle.js}"></script>
+</body>
+</html>

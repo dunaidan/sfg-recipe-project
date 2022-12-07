@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
@@ -23,6 +25,17 @@ public class RecipeServiceImpl implements RecipeService {
         List<Recipe> recipes = new ArrayList<>();
         recipeRepository.findAll().forEach(recipes::add);
         return recipes;
+    }
+
+    @Override
+    public Recipe findById(Long id) {
+        Optional<Recipe> recipe = recipeRepository.findById(id);
+
+        if(!recipe.isPresent()) {
+            throw new RuntimeException("Recipe with id " + id + " is missing");
+        }
+
+        return recipe.get();
     }
 
     @Override

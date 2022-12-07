@@ -18,34 +18,7 @@
     <link rel="stylesheet" th:href="@{/blog.css}"/>
 </head>
 <body>
-
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-        <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{index.html}">AppLogo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#recipeNavbar" aria-controls="recipeNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="recipeNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{index.html}">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:href="@{/ingredients}" data-bs-toggle="dropdown" aria-expanded="false">Ingredients</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Add ingredient</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form role="search">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
-        </div>
-    </nav>
-</div>
+<div th:replace="fragments/header :: header"></div>
 <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-bg-light">
         <div class="col-md-6 px-0">
@@ -110,11 +83,7 @@
     </div>
 </main>
 
-<footer class="blog-footer">
-    <p>
-        <a href="#">Back to top</a>
-    </p>
-</footer>
+<footer th:replace="fragments/footer :: footer"></footer>
 
 <script th:src="@{/webjars/bootstrap/5.2.3/dist/js/bootstrap.bundle.js}"></script>
 </body>
