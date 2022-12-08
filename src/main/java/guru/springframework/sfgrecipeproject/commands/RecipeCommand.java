@@ -1,9 +1,6 @@
 package guru.springframework.sfgrecipeproject.commands;
 
-import guru.springframework.sfgrecipeproject.domain.Category;
 import guru.springframework.sfgrecipeproject.domain.Difficulty;
-import guru.springframework.sfgrecipeproject.domain.IngredientQuantity;
-import guru.springframework.sfgrecipeproject.domain.Notes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +22,10 @@ public class RecipeCommand {
     private Integer servings;
     private String source;
     private String url;
-    private Notes notes;
+    private NotesCommand notes;
     private String directions;
     private LocalDateTime timestamp;
-    private List<IngredientQuantity> ingredients = new ArrayList<>();
-    private List<Category> categories = new ArrayList<>();
+    private List<IngredientQuantityCommand> ingredientsCommand = new ArrayList<>();
+    private List<CategoryCommand> categoriesCommand = new ArrayList<>();
     private Difficulty difficulty;
 }
