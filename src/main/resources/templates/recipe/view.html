@@ -28,12 +28,11 @@
             <div class="col">
               <p><strong>Prep Time: </strong><span th:text="${recipe.prepTime} + ' min'">10 min</span></p>
               <p><strong>Cook Time: </strong><span th:text="${recipe.cookTime} + ' min'">10 min</span></p>
-              <p><strong>Source: </strong><span th:text="${recipe.source}">Source</span></p>
+              <p><strong>Source: </strong><a th:href="${recipe.url}" th:text="${recipe.source}">Source</a></p>
             </div>
             <div class="col">
               <p><strong>Difficulty: </strong><span th:text="${#strings.toLowerCase(recipe.difficulty)}">hard</span></p>
               <p><strong>Servings: </strong><span th:text="${recipe.servings}">4</span></p>
-              <p><strong>URL: </strong><span th:text="${recipe.url}">http://google.com</span></p>
             </div>
           </div>
         </div>
